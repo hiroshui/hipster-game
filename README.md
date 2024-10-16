@@ -37,10 +37,12 @@ It is written for private use only. All commercial use is prohibited!
     npm install
     ```
 
-3. Set up the `.env` file to include your Spotify API credentials:
-    ```
-    REACT_APP_SPOTIFY_CLIENT_ID=your_spotify_client_id
-    REACT_APP_SPOTIFY_REDIRECT_URI=http://localhost:3000/callback
+3.  Replace your spotify api tokens in src/token.json
+    ```json
+    {
+    "clientId": "YOUR_CLIENT_ID",
+    "clientSecret": "YOUR_CLIENT_SECRET"
+    }
     ```
 
 4. Start the development server
