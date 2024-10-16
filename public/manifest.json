@@ -1,0 +1,20 @@
+{
+  "short_name": "Hipster",
+  "name": "Hipster PWA",
+  "icons": [
+    {
+      "src": "icons/icon_192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/icon_512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}
