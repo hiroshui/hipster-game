@@ -1,46 +1,77 @@
-# Getting Started with Create React App
+# Hipster Game React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React-based application/game, utilizing the Spotify API to create interactive playlist cards with front and back designs. Users can import playlists, edit them, and print out game cards for physical use. The app also supports offline functionality as a Progressive Web App (PWA).
 
-## Available Scripts
+It is written for private use only. All commercial use is prohibited!
 
-In the project directory, you can run:
+## Features
+- Import Spotify playlists via URL
+- Edit and save playlists locally
+- Print playlist cards with front and back designs (6x6cm cards)
+- Toggle print modes for front/back printing
+- Supports both desktop and mobile printing
+- Responsive design for different screen sizes
+- PWA functionality for offline use
+- Hosted on AWS S3 with CloudFront and Route 53 for HTTPS and domain management
 
-### `npm start`
+## Tech Stack
+- React (TypeScript)
+- Spotify API integration
+- AWS S3, CloudFront, and Route 53 for hosting
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Prerequisites
+- Node.js and npm installed on your local machine
 
-### `npm test`
+### Steps
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository
+    ```bash
+    git clone https://github.com/hiroshui/hipster-game.git
+    cd hipster-game
+    ```
 
-### `npm run build`
+2. Install dependencies
+    ```bash
+    npm install
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Set up the `.env` file to include your Spotify API credentials:
+    ```
+    REACT_APP_SPOTIFY_CLIENT_ID=your_spotify_client_id
+    REACT_APP_SPOTIFY_REDIRECT_URI=http://localhost:3000/callback
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the development server
+    ```bash
+    npm start
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+This app is deployed on AWS S3, with CloudFront for HTTPS and Route 53 for DNS management. Follow these steps for deployment:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Build the project
+    ```bash
+    npm run build
+    ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Upload the build files to your S3 bucket
+    ```bash
+    aws s3 sync build/ s3://your-s3-bucket-name --acl public-read
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. Set up CloudFront to serve the content over HTTPS:
+   - In CloudFront, create a new distribution with your S3 bucket as the origin.
+   - Set up an SSL certificate for HTTPS.
+   
+4. Route53 Setup:
+   - In AWS Route53, create an Alias record pointing to the CloudFront distribution for your custom domain.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Usage
 
-## Learn More
+1. Import a playlist by pasting a Spotify playlist URL.
+2. Manage your playlists: add, remove, or reorder songs.
+3. Toggle print modes for printing cards with front and back designs.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
