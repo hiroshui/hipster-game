@@ -6,13 +6,13 @@ import uuid
 import pandas as pd
 
 # Deine Spotify API-Credentials
-CLIENT_ID = 'ac65766b4ce24d5db342615dbb12c06d'
-CLIENT_SECRET = '061f39e13fdb42848782db21254a23f9'
+CLIENT_ID = ''
+CLIENT_SECRET = ''
 
 #args
 csv_file="callme.csv"
-out_file= "jonas.json"
-playlist_name="Jonas' Edition"
+out_file= "test.json"
+playlist_name="Test Edition"
 
 # Verwende Cache für den Token
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=CLIENT_ID,
